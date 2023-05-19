@@ -3,17 +3,17 @@
 #include <vector>
 #include <ctime>
 
-void painting_size_initialization(std::vector <std::vector <int>>& vec, int& rows, int& cols) {	
+void painting_size_initialization(std::vector <std::vector <int>>& vec, int& str, int& cols) {
 
 	std::srand(std::time(nullptr));
 
-	std::cout << "Enter the number of rows: ";
-	std::cin >> rows;
+	std::cout << "Enter the number of lines: ";
+	std::cin >> str;
 
 	std::cout << "Enter the number of cols: ";
 	std::cin >> cols;
 
-	for (int i = 0; i < rows; ++i) {
+	for (int i = 0; i < str; ++i) {
 
 		std::vector <int> vec_cols;
 
@@ -30,12 +30,12 @@ void painting_size_initialization(std::vector <std::vector <int>>& vec, int& row
 
 int main() {
 
-	int rows;
+	int str;
 	int cols;	
 	
 	std::vector <std::vector <int>> vec; 	
 
-	painting_size_initialization(vec, rows, cols);
+	painting_size_initialization(vec, str, cols);
 
 	std::ofstream picture("D:\\Skillbox\\C++\\working\\Practice 20 (Writing to files)\\task2\\pic.txt");
 	
@@ -43,17 +43,24 @@ int main() {
 
 		std::cout << "File is open\n";		
 
-		for (int i = 0; i < rows; ++i) {
+		for (int i = 0; i < str; ++i) {
 
 			for (int j = 0; j < cols; ++j) {
 
 				picture << vec[i][j];
 
 			}				
+			
+			if (i == str - 1) {
+
+				break;
+
+			}
 
 			picture << std::endl;
 
 		}
+
 	}
 	else {
 
